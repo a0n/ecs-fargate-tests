@@ -1,0 +1,19 @@
+{
+  "name": "vts2-aws-deployment-load",
+  "version": "1.0.0",
+  "description": "test webservice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@lab.trjt.de:devops/vts2-aws-deployment-load.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
