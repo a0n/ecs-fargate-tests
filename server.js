@@ -2,13 +2,16 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+function getEnvString() {
+  return Object.entries(process.env).map(entry => entry.join(': ')).join(" <br> ");
+}
+
 app.get('/', (req, res) => {
-  const envstring = Object.entries(process.env).map(entry => entry.join(': ')).join(" <br> ")
-  res.send(`Environment: <br> ${envstring}`)
+  res.send(`route ${req.originalUrl} : Environment: <br> ${getEnvString()}`)
 });
 
 app.get('*', function(req, res){
-  res.status(404).send('what???');
+  res.status(404).send(`route ${req.originalUrl} : Environment: <br> ${getEnvString()}`)
 });
 
 const server = app.listen(port, () => {
