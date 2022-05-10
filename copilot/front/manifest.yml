@@ -21,6 +21,7 @@ http:
   stickiness: false
 
 nlb:
+  alias: test.aws.trjt.org
   port: 443/tls
 
 # Configuration for your containers and service.
