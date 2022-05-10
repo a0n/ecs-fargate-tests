@@ -1,3 +1,5 @@
+import process from 'node:process';
+
 function resolveAfter2Seconds() {
   return new Promise(resolve => {
     setTimeout(() => {
@@ -17,3 +19,10 @@ async function run() {
 
 run();
 
+function handleExit(signal) {
+  console.log(`Received ${signal}. Shutting Down NOW!`)
+  process.exit(0);
+}
+process.on('SIGINT', handleExit);
+process.on('SIGQUIT', handleExit);
+process.on('SIGTERM', handleExit);
