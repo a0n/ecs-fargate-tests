@@ -4,9 +4,12 @@ const port = 3000
 
 app.get('/', (req, res) => {
   const envstring = Object.entries(process.env).map(entry => entry.join(': ')).join(" <br> ")
-
   res.send(`Environment: <br> ${envstring}`)
-})
+});
+
+app.get('*', function(req, res){
+  res.status(404).send('what???');
+});
 
 const server = app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
