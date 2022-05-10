@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
   res.send(`route ${req.originalUrl} : Environment: <br> ${getEnvString()}`)
 });
 
+app.get('/health', (req, res) => {
+  res.status(200).send('Healthy!')
+});
+
 app.get('*', function(req, res){
   res.status(404).send(`route ${req.originalUrl} : Environment: <br> ${getEnvString()}`)
 });
