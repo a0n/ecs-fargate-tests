@@ -8,11 +8,20 @@ type: Load Balanced Web Service
 
 # Distribute traffic to your service.
 http:
-  # Requests to this path will be forwarded to your service.
-  # To match all requests you can use the "/" path.
   path: '/'
-  # You can specify a custom health check path. The default is "/".
-  healthcheck: '/health'
+  healthcheck:
+    path: '/health'
+    success_codes: '200,301'
+    healthy_threshold: 3
+    unhealthy_threshold: 2
+    interval: 15s
+    timeout: 10s
+    grace_period: 45s
+  deregistration_delay: 5s
+  stickiness: false
+
+nlb:
+  port: 443/tls
 
 # Configuration for your containers and service.
 image:
@@ -23,7 +32,7 @@ image:
 
 cpu: 256       # Number of CPU units for the task.
 memory: 512    # Amount of memory in MiB used by the task.
-count: 1       # Number of tasks that should be running in your service.
+count: 2       # Number of tasks that should be running in your service.
 exec: true     # Enable running commands in your container.
 
 # Optional fields for more advanced use-cases.
