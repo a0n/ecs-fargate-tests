@@ -1,5 +1,10 @@
 import process from 'node:process';
 
+function log(message) {
+  console.log(`${Date.now()}: ${message}`);
+}
+
+
 function resolveAfter2Seconds() {
   return new Promise(resolve => {
     setTimeout(() => {
@@ -10,9 +15,9 @@ function resolveAfter2Seconds() {
 
 
 async function run() {
-  console.log('starting work');
+  log('starting work');
   const result = await resolveAfter2Seconds();
-  console.log(result);
+  log(result);
   await run();
   // expected output: "resolved"
 }
@@ -20,7 +25,7 @@ async function run() {
 run();
 
 function handleExit(signal) {
-  console.log(`Received ${signal}. Shutting Down NOW!`)
+  log(`Received ${signal}. Shutting Down NOW!`)
   process.exit(0);
 }
 process.on('SIGINT', handleExit);
