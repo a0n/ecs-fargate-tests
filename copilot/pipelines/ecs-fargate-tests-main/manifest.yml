@@ -1,9 +1,9 @@
-# The manifest for the "vts2-master" pipeline.
+# The manifest for the "ecs-fargate-tests-main" pipeline.
 # This YAML file defines your pipeline: the source repository it tracks and the order of the environments to deploy to.
 # For more info: https://aws.github.io/copilot-cli/docs/manifest/pipeline/
 
 # The name of the pipeline.
-name: vts2-master
+name: ecs-fargate-tests-main
 
 # The version of the schema used in this template.
 version: 1
@@ -15,10 +15,10 @@ source:
   provider: GitHub
   # Additional properties that further specify the location of the artifacts.
   properties:
-    branch: master
-    repository: https://github.com/surecam/vts2
+    branch: main
+    repository: https://github.com/a0n/ecs-fargate-tests
     # Optional: specify the name of an existing CodeStar Connections connection.
-    connection_name: arn:aws:codestar-connections:us-east-1:705059167255:connection/17c33593-a088-4b67-bead-33877a9a7241
+    # connection_name: a-connection
 
 # This section defines the order of the environments your pipeline will deploy to.
 stages:
